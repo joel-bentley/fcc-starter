@@ -79,9 +79,7 @@ app.get('/api/clicks', userController.ensureAuthenticated, clickController.getCl
 app.post('/api/clicks', userController.ensureAuthenticated, clickController.addClick);
 app.delete('/api/clicks', userController.ensureAuthenticated, clickController.resetClicks);
 
-app.get('/api/profile', userController.ensureAuthenticated, function(req, res) {
-	res.json(req.user.github);
-});
+app.get('/api/profile', userController.ensureAuthenticated, userController.getProfile);
 
 // Production error handler
 if (app.get('env') === 'production') {

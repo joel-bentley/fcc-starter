@@ -78,3 +78,7 @@ exports.ensureAuthenticated = function(req, res, next) {
     res.status(401).send({ msg: 'Unauthorized' });
   }
 };
+
+exports.getProfile = function(req, res) {
+	res.json(req.user.github);
+};
