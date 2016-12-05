@@ -21,7 +21,7 @@ const resetClicks = () => axios.delete(`${API}/clicks`)
 
 class App extends React.Component {
   state = {
-      id: '',
+      userId: '',
       username: '',
       displayName: '',
       publicRepos: '',
@@ -32,9 +32,9 @@ class App extends React.Component {
   getData = () => {
     return axios.all([ getProfile(), getClicks() ])
       .then(res => {
-        const { id, username, displayName, publicRepos, avatar } = res[0].data
+        const { userId, username, displayName, publicRepos, avatar } = res[0].data
         const { clicks } = res[1].data
-        this.setState({ id, username, displayName, publicRepos, avatar, clicks })
+        this.setState({ userId, username, displayName, publicRepos, avatar, clicks })
       })
   }
 
@@ -48,7 +48,7 @@ class App extends React.Component {
     return logout()
       .then( () => {
         this.setState({
-          id: '',
+          userId: '',
           username: '',
           displayName: '',
           publicRepos: '',
@@ -78,7 +78,7 @@ class App extends React.Component {
 
   render() {
     const { router } = this.props
-    const { id, username, displayName, publicRepos, avatar, clicks } = this.state
+    const { userId, username, displayName, publicRepos, avatar, clicks } = this.state
 
     const isAuthenticated = displayName !== ''
 
@@ -99,7 +99,7 @@ class App extends React.Component {
           )}/>
 
           <MatchWhenAuthorized pattern="/profile" isAuthenticated={isAuthenticated} component={() => (
-            <Profile  {...{ id, username, displayName, publicRepos }}/>
+            <Profile  {...{ userId, username, displayName, publicRepos }}/>
           )}/>
 
           <Match pattern="/login" component={(props) => (

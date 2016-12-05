@@ -1,7 +1,7 @@
 import React from 'react'
 import { Col, Table } from 'react-bootstrap'
 
-const Profile = ({ id, username, displayName, publicRepos }) => (
+const Profile = ({ userId, username, displayName, publicRepos }) => (
   <Col md={6} mdOffset={3} sm={8} smOffset={2}>
     <img src="/img/gh-mark-32px.png" alt="github logo"/>
     <div className="text-left">
@@ -9,7 +9,7 @@ const Profile = ({ id, username, displayName, publicRepos }) => (
         <tbody>
           <tr>
             <td>ID:</td>
-            <td>{id}</td>
+            <td>{userId}</td>
           </tr>
           <tr>
             <td>Username:</td>

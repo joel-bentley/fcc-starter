@@ -2,7 +2,7 @@ var User = require('../models/User.js');
 
 exports.getClicks = function(req, res) {
 	User.findOne({
-		'github.id': req.user.github.id
+		'github.userId': req.user.github.userId
 	}, {
 		'_id': false
 	}).exec(function(err, result) {
@@ -16,7 +16,7 @@ exports.getClicks = function(req, res) {
 
 exports.addClick = function(req, res) {
 	User.findOneAndUpdate({
-		'github.id': req.user.github.id
+		'github.userId': req.user.github.userId
 	}, {
 		$inc: {
 			'nbrClicks.clicks': 1
@@ -32,7 +32,7 @@ exports.addClick = function(req, res) {
 
 exports.resetClicks = function(req, res) {
 	User.findOneAndUpdate({
-		'github.id': req.user.github.id
+		'github.userId': req.user.github.userId
 	}, {
 		'nbrClicks.clicks': 0
 	}).exec(function(err, result) {
