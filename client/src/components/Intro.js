@@ -3,7 +3,7 @@ import { Button, Jumbotron, Row, Col } from 'react-bootstrap'
 
 const Intro = () => (
   <div>
-    <Jumbotron>
+    <Jumbotron style={{ paddingTop: '5px', paddingBottom: '30px', backgroundColor: '#eee' }}>
       <h1>Welcome!!!!!</h1>
       <h2>Why not log in?</h2>
     </Jumbotron>
